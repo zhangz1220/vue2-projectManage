@@ -1,0 +1,102 @@
+.top {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.home-left {
+    .user {
+        background: #fff;
+        border-radius: 5px;
+        .userup {
+            margin: 0 25px;
+            padding: 25px 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #e2e0e0;
+            .image {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+            }
+            .user-info {
+                padding-left: 30px;
+                .name {
+                    font-size: 26px;
+                }
+                .access {
+                    margin-top: 5px;
+                    color: #a5a2a2;
+                }
+            }
+        }
+        .userdown {
+            padding: 25px;
+            div {
+                display: flex;
+                align-items: center;
+                // justify-content: space-between;
+                color: #868585;
+            }
+        }
+    }
+    .kecheng {
+        padding: 10px 25px;
+        margin-top: 20px;
+        background: #fff;
+        min-height: 320px;
+        border-radius: 5px;
+        // height: 320px;
+        // overflow-y: auto;
+        .head {
+            display: flex;
+            color: #878585;
+            height: 50px;
+            line-height: 50px;
+            border-bottom: 1px solid #e8e8e8;
+            div {
+                flex: 1;
+            }
+        }
+        .content-item {
+            display: flex;
+            color: #b3b0b0;
+            line-height: 50px;
+            border-bottom: 1px solid #e8e8e8;
+            div {
+                flex: 1;
+            }
+        }
+    }
+}
+
+.home-right {
+    .statistacs-box {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .box-item {
+            margin-bottom: 20px;
+            width: 32%;
+            display: flex;
+            background-color: #fff;
+            .image {
+                width: 100px;
+                height: 100px;
+                border-radius: 5px;
+            }
+            .item-right {
+                width: 100%;
+                text-align: center;
+                p {
+                    font-size: 25px;
+                    margin: 10px;
+                }
+                span {
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+        }
+    }
+}
