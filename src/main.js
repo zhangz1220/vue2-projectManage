@@ -10,14 +10,8 @@ Vue.use(VueRouter);
 //引入 Vuex
 import Vuex from 'vuex'
 Vue.use(Vuex)
-    //引入 store
+//引入 store
 import store from './store';
-
-//Axios
-// import Axios from 'axios'
-import Axios from '@/api/axios'
-// axios需要使用prototype将axios挂载到原型上 
-Vue.prototype.http = Axios //以后使用this.http
 
 //引入 elementui
 import ElementUI from 'element-ui';

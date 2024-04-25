@@ -38,9 +38,6 @@ const router = new VueRouter({
                 //独享路由守卫 只有前置，没有后置
                 beforeEnter: (to, from, next) => {
                     //对当前路由做限制
-                    console.log('首页的 独享路由守卫 beforeEnter.......')
-                    console.log('to.......', to)
-                    console.log('from.......', from)
                     next()
                 },
                 component: () =>
@@ -93,9 +90,6 @@ const router = new VueRouter({
 
 //全局后置路由守卫---后置：初始化的时候被调用、每次路由切换之后被调用
 router.afterEach((to, from) => {
-    console.log('全局后置路由守卫 afterEach .......')
-    console.log('to.......', to)
-    console.log('from.......', from)
     //路由切换后 修改页签 title
     document.title = to.meta.title || '系统管理' //meta里没有配title，则默认显示 '系统管理'
 })

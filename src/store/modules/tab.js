@@ -10,12 +10,9 @@ export default {
     actions: {
         //调api
         getTitle(context, val) {
-            http.get("https://api.uixsj.cn/hitokoto/get?type=social").then(
-                response => {
-                    context.commit('GET_TITLE', response.data)
-                },
-                error => {
-                    alert(error.message)
+            http.get("https://api.oioweb.cn/api/common/OneDayEnglish").then(
+                res => {
+                    context.commit('GET_TITLE', res.data.result.note)
                 }
             )
         }

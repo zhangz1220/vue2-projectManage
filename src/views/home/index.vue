@@ -3,9 +3,9 @@
     <el-row :gutter="20">
       <el-col :span="24" style="margin-bottom: 20px;text-align: left;">
         <div class="top">
-          <el-button type="primary" size='mini'>首页</el-button>
+          <el-button type="primary" size='mini' @click="logout">退出登录</el-button>
           <!-- <span>和：{{bigSum}}；姓：{{firstName}}</span> -->
-          <span style="color: #66b1ff;">{{ homeTilet }}</span>
+          <span style="color: #66b1ff;">今日语录：{{ homeTilet }}</span>
         </div>
       </el-col>
     </el-row>
@@ -96,13 +96,6 @@
             </div>
           </div>
         </div>
-        <div>
-          <div style="width: 100px;height: 100px;background: red;color: #fff;line-height: 100px;
-          text-align: center;font-size: 29px;font-family: cursive;
-    font-weight: bold;">
-            华安
-          </div>
-        </div>
       </el-col>
     </el-row>
   </div>
@@ -110,27 +103,14 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import { Userinfo, Logout } from '@/api/login';
 //引入
-import website from '@/config/website';
 // import env from '@/config/dev.env.js';
+import axios from "axios"
 export default {
   name: 'App',
   mounted() {
-
-    //http://localhost:8081/api/userinfo
-    this.http.get(website.url + (process.env.NODE_ENV === 'development' ? '/apiManage' : '') + '/userinfo')
-      // this.http.get(website.url+'/apiManage'+'/userinfo')
-      .then(
-        response => {
-          console.log('userinfo请求成功')
-          console.log(response.data)
-          console.log('$store.getters ===', this.$store.getters)
-        },
-        response => {
-          console.log('userinfo请求失败')
-          console.log(response.message)
-        }
-      )
+    this.getUser()
     //获取鸡汤文本
     this.$store.dispatch('tab/getTitle')
   },
@@ -154,7 +134,24 @@ export default {
     }
   },
   methods: {
-
+    getUser() {
+      Userinfo({ username: 'admin' }).then(res => {
+        console.log('res==', res)
+        if (res.code == '0000') {
+          console.log('res==', res)
+        } else {
+          this.$message.error(res.msg)
+          this.$router.push('/')
+        }
+      })
+    },
+    logout() {
+      Logout().then(res => {
+        this.$router.push('/')
+      }).catch(err => {
+        console.log('err==', err)
+      })
+    }
   },
   computed: {
     ...mapState({ homeTilet: state => state.tab.homeTilet }),
