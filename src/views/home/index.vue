@@ -119,7 +119,7 @@ export default {
   },
   data() {
     return {
-      userImg: require('@/assets/user.jpg'),
+      userImg: require('@/assets/img/user.jpg'),
       //课程列表
       kechengList: [
         { id: '01', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
@@ -127,9 +127,6 @@ export default {
         { id: '03', name: 'HUAWEI', jrgm: '124', bygm: '456', zgm: '10000' },
         { id: '04', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
         { id: '05', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
-        { id: '06', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
-        { id: '07', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
-        { id: '08', name: 'oppo', jrgm: '124', bygm: '456', zgm: '10000' },
       ]
     }
   },
@@ -137,7 +134,7 @@ export default {
     getUser() {
       Userinfo({ username: 'admin' }).then(res => {
         console.log('res==', res)
-        if (res.code == '0000') {
+        if (res.code == '200') {
           console.log('res==', res)
         } else {
           this.$message.error(res.msg)

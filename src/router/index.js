@@ -14,66 +14,105 @@ const router = new VueRouter({
     routes: [
         //登录页
         {
-            name: 'login',
-            path: '/',
+            path: '/', //路由路径
+            component: () =>
+                import('@/page/login/index.vue'), //路由组件
+            name: 'login', //路由名称
             meta: {
-                isAuth: false,
-                title: '登录'
-            },
-            component: () =>
-                import('@/page/login/index.vue')
-        },
-        //首页
-        {
-            path: '/home',
-            component: () =>
-                import('@/page/home/index.vue'),
-            redirect: '/home/home',
-            children: [{
-                path: 'home',
-                name: 'home',
-                meta: {
-                    title: '首页'
-                },
-                //独享路由守卫 只有前置，没有后置
-                beforeEnter: (to, from, next) => {
-                    //对当前路由做限制
-                    next()
-                },
-                component: () =>
-                    import('@/views/home/index.vue'),
-            },
-            //其他页
-            {
-                name: 'gitHubUserSearch',
-                path: 'other/gitHubUserSearch',
-                meta: {
-                    title: 'gitHub用户搜索'
-                },
-                component: () =>
-                    import('@/views/other/gitHubUserSearch/index.vue'),
-            },
-            {
-                name: 'vuexTest',
-                path: 'other/vuexTest',
-                meta: {
-                    title: ''
-                },
-                component: () =>
-                    import('@/views/other/vuexTest/index.vue'),
-                props: true, //true-该路由组件收到的params参数以props的形式传给当前组件
-            },
-            {
-                name: 'demo',
-                path: 'other/demo',
-                meta: {
-                    title: ''
-                },
-                component: () =>
-                    import('@/views/other/demo/index.vue'),
-                props: true, //true-该路由组件收到的params参数以props的形式传给当前组件
+                title: '登录页',
+                hidden: true, //菜单中是否隐藏
+                icon: ''
             }
-
+        },
+        {
+            path: '/layout',
+            component: () =>
+                import('@/page/layout/index.vue'),
+            name: 'layout',
+            meta: {
+                title: '',
+                hidden: false, //菜单中是否隐藏
+                icon: ''
+            },
+            redirect: '/home',
+            children: [
+                {
+                    path: '/home',
+                    component: () => import('@/views/home/index.vue'),
+                    meta: {
+                        title: '首页',
+                        hidden: false, //菜单中是否隐藏
+                        icon: 'el-icon-s-marketing'
+                    }
+                }
+            ]
+        },
+        {
+            path: '/chart',
+            component: () =>
+                import('@/page/layout/index.vue'),
+            name: 'Chart',
+            meta: {
+                title: '图表',
+                hidden: false, //菜单中是否隐藏
+                icon: 'Platform'
+            },
+            redirect: '/chart/pie',
+            children: [
+                {
+                    path: '/chart/pie',
+                    component: () => import('@/views/chart/pie/index.vue'),
+                    name: 'Pie',
+                    meta: {
+                        title: '饼状图',
+                        hidden: false, //菜单中是否隐藏
+                        icon: 'User'
+                    }
+                },
+                {
+                    path: '/chart/line',
+                    component: () => import('@/views/chart/line/index.vue'),
+                    name: 'Line',
+                    meta: {
+                        title: '线图',
+                        hidden: false, //菜单中是否隐藏
+                        icon: 'User'
+                    }
+                },
+            ]
+        },
+        {
+            path: '/acl',
+            component: () =>
+                import('@/page/layout/index.vue'),
+            name: 'Acl',
+            meta: {
+                title: '权限管理',
+                hidden: false, //菜单中是否隐藏
+                icon: 'Lock'
+            },
+            redirect: '/acl/user',
+            children: [
+                {
+                    path: '/acl/user',
+                    component: () => import('@/views/acl/user/index.vue'),
+                    name: 'User',
+                    meta: {
+                        title: '用户管理',
+                        hidden: false, //菜单中是否隐藏
+                        icon: 'User'
+                    }
+                },
+                {
+                    path: '/acl/role',
+                    component: () => import('@/views/acl/role/index.vue'),
+                    name: 'Role',
+                    meta: {
+                        title: '角色管理',
+                        hidden: false, //菜单中是否隐藏
+                        icon: 'User'
+                    }
+                },
             ]
         },
 

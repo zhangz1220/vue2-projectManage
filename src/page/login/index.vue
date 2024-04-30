@@ -8,12 +8,14 @@
             <el-input v-model="form.username" placeholder="账号" @keyup.enter.native="login"></el-input>
           </el-form-item>
           <el-form-item label="">
-            <el-input v-model="form.password" type="password" placeholder="密码" @keyup.enter.native="login"></el-input>
+            <el-input v-model="form.password" type="password" :prefix-icon="Lock" placeholder="密码"
+              @keyup.enter.native="login" show-password></el-input>
           </el-form-item>
         </el-form>
         <div>
           <el-button class="button-login" type="primary" :loading="loading" @click.native.prevent="login">{{ loading ?
-            '登录中' : '登录' }}</el-button>
+            '登录中' : '登录' }}
+          </el-button>
         </div>
       </div>
     </div>
@@ -51,11 +53,12 @@ export default {
           this.$message.success('登录成功');
           //获取vuex 数据
           //调用mutation的方法 修改 store数据
-          // this.$store.commit('user/changeUserinfo', this.form)
-          this.$router.push('/home/home')
+          this.$store.commit('user/changeUserinfo', this.form)
+          this.$router.push('/layout')
+          // this.$router.push('/home/home')
         } else {
           this.loading = false;
-          this.$message.error(res.msg);
+          this.$message.error(res.message);
         }
       }).catch(err => {
         console.log('err==', err)
