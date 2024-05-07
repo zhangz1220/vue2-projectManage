@@ -1,15 +1,10 @@
 <template>
   <div id="app">
-    <!-- <div>
-      <el-button type="primary" @click="login">登录</el-button>
-    </div> -->
     <router-view />
   </div>
 </template>
 
 <script>
-// import myMenu from '@/components/home/myMenu.vue'
-// import myContent from '@/components/home/myContent.vue'
 export default {
   name: 'App',
   components: {
